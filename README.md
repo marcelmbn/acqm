@@ -2,7 +2,7 @@
 # AcQM
 
 For the parameterization of the EEQ model for the full actinide series, we created a set of actinide structures called AcQM.
-In total, the set contains 1283 actinide complexes. 
+In total, the set contains 1283 realistic actinide complexes with coordination numbers ranging from 4 to 10 and 1254 small mindless complexes with coordination numbers ranging from 1 to 8. 
 
 ### Contents
 
