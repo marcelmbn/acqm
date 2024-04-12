@@ -10,7 +10,7 @@ Of those, 1283 are realistic actinide complexes with coordination numbers rangin
 For every element, the various structures are in subfolders.
 For every structure, the following is provided:
 
-- Coordinates in xyz format (coord.xyz)
-- Total charge (.CHRG)
-- Number of unpaired electrons (.UHF)
-- Hirshfeld partial charges obtained with wB97M-V/def2-TZVPP, ma-def-TZVP for the actinides (hirshfeld.apc)
+- Coordinates in xyz format (`coord.xyz`)
+- Total charge (`.CHRG`)
+- Number of unpaired electrons (`.UHF`)
+- Hirshfeld partial charges obtained with wB97M-V/def2-TZVPP, ma-def-TZVP for the actinides (`hirshfeld.apc`)
