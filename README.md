@@ -13,4 +13,4 @@ For every structure, the following is provided:
 - Coordinates in xyz format (coord.xyz)
 - Total charge (.CHRG)
 - Number of unpaired electrons (.UHF)
-- Hirshfeld partial charges obtained with wB97M-V/dev2-TZVPP, ma-def-TZVP for the actinides (hirshfeld.apc)
+- Hirshfeld partial charges obtained with wB97M-V/def2-TZVPP, ma-def-TZVP for the actinides (hirshfeld.apc)
