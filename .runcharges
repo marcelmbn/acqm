@@ -1,0 +1,75 @@
+#!/bin/bash
+
+pushd () {
+        command pushd "$@" > /dev/null
+}
+
+popd () {
+        command popd "$@" > /dev/null
+}
+
+wait_until_cpu_low() {
+    awk -v target="99" '
+    $12 ~ /^[0-9.]+$/ {
+        current = 100 - $12
+        if(current <= target) { exit(0); }
+    }' < <(LC_ALL=C mpstat 1)
+}
+
+calculate_charges() {
+    rm -rf $func
+    mkdir -p $func
+    cp $strucfile $func/
+    chrg=0
+    if [ -f .CHRG ]; then
+        chrg=$(cat .CHRG)
+        if [[ ! $chrg -eq 0 ]];then
+            cp .CHRG $func/
+        fi
+    fi
+    uhf=0
+    if [ -f .UHF ]; then
+        uhf=$(cat .UHF)
+        if [[ ! $uhf -eq 0 ]];then
+            cp .UHF $func/
+        fi
+    fi
+    pushd $func
+        calcname="${i}_${k}"
+        echo "$calcname"
+        $1 > charge.out 2> charge.err
+        ((k=k+1))
+    popd
+}
+
+startdir=$( pwd ) 
+
+strucfile="coord.xyz"
+rm -f $startdir/.runcharges.err
+k=1
+for i in $( cat $startdir/.list.dirs | awk '{print $1}' ) 
+do
+    if [[ $i == \#* ]]; then
+        echo "Skipping ${i}..."
+        continue
+    fi
+    pushd $i
+        for j in *
+        do
+            pushd $j
+                fallbackdir=$( pwd )
+                echo $i
+                if [ ! -f $strucfile ]; then
+                    echo "NO coord file present! in ${i}_${d}" >> $startdir/.runcharges.err
+                    cd $fallbackdir
+                    continue
+                fi
+        
+                func="eeq"
+                calculate_charges "multicharge -i xyz $strucfile --json"
+                func="ceh-v2"                                                          
+                calculate_charges "tblite_ceh-v2 guess --method ceh --verbose $strucfile --json"
+            popd
+        done
+    popd
+done

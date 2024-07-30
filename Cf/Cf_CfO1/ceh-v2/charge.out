@@ -1,0 +1,27 @@
+[Info] Molecular spin read from './.UHF'
+xTB calculator
+ | Coulomb electrostatics
+ |  * isotropic Klopman-Ohno electrostatics
+ |  * onsite third-order electrostatics
+CEH guess
+integral cutoff           4.0000000000000E+01 bohr
+
+Atomic charges (in atomic units):
+---------------------------------------------------------
+     #    Z                 q
+---------------------------------------------------------
+     1   98 Cf       0.620207
+     2    8 O       -0.620207
+---------------------------------------------------------
+
+Atomic dipole moments (in atomic units):
+---------------------------------------------------------
+     #    Z                 x            y            z
+---------------------------------------------------------
+     1   98 Cf       0.001221     0.002115    -0.001235
+     2    8 O        0.015087     0.026131    -0.015251
+---------------------------------------------------------
+           total    -0.925522    -1.603049     0.935586
+---------------------------------------------------------
+
+[Info] JSON dump of results written to 'tblite.json'
